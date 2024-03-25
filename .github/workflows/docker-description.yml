@@ -1,0 +1,27 @@
+name: Update DockerHub Description
+
+on:
+  workflow_call:
+    inputs:
+      repository:
+        required: true
+        type: string
+      description:
+        required: true
+        type: string
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ inputs.repository }}
+          short-description: ${{ inputs.description }}

@@ -9,7 +9,6 @@ on:
       images:
         required: false
         type: string
-        default: jeffersonlab/${{ github.event.repository.name }}
     secrets:
       DOCKERHUB_USERNAME:
         required: true
@@ -24,7 +23,6 @@ on:
       images:
         required: false
         type: string
-        default: jeffersonlab/${{ github.repository.name }}
         description: "image name"
     secrets:
       DOCKERHUB_USERNAME:
@@ -38,6 +36,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Get images param or set default
+        id: getimages
+        run: |
+          IMAGES_INPUT=${{ github.event.inputs.images }}
+          echo "images=${IMAGES_INPUT:-jeffersonlab/${{ github.event.repository.name }}}"" >> $GITHUB_OUTPUT
+      -
         name: Checkout
         uses: actions/checkout@v4
       -
@@ -46,7 +50,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ inputs.images }}
+            ${{ steps.getimages.outputs.images }}
           tags: |
             type=semver,pattern={{version}},event=release
             type=semver,pattern={{version}},event=workflow_dispatch

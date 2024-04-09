@@ -24,7 +24,7 @@ on:
       images:
         required: false
         type: string
-        default: jeffersonlab/${{ github.event.repository.name }}
+        default: jeffersonlab/${{ github.repository.name }}
         description: "image name"
     secrets:
       DOCKERHUB_USERNAME:

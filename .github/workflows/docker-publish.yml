@@ -39,7 +39,7 @@ jobs:
         name: Get images param or set default
         id: getimages
         run: |
-          IMAGES_INPUT=${{ github.event.inputs.images }}
+          IMAGES_INPUT=${{ inputs.images }}
           echo "images=${IMAGES_INPUT:-jeffersonlab/${{ github.event.repository.name }}}" >> $GITHUB_OUTPUT
       -
         name: Checkout

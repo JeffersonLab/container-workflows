@@ -1,4 +1,4 @@
-# container-workflows
+# container-workflows [![Docker](https://img.shields.io/docker/v/jeffersonlab/container-workflows?sort=semver&label=DockerHub)](https://hub.docker.com/r/jeffersonlab/container-workflows)
 GitHub Action container workflows
 
 | Name                 | Description                      |

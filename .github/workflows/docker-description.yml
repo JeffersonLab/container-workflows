@@ -4,10 +4,10 @@ on:
   workflow_call:
     inputs:
       repository:
-        required: true
+        required: false
         type: string
       description:
-        required: true
+        required: false
         type: string
     secrets:
       DOCKERHUB_USERNAME:
@@ -18,10 +18,17 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      - name: Get params or set defaults
+        id: getparams
+        run: |
+          REPO_INPUT=${{ inputs.repository }}
+          echo "repository=${REPO_INPUT:-jeffersonlab/${{ github.event.repository.name }}}" >> $GITHUB_OUTPUT
+          DESC_INPUT=${{ inputs.description }}
+          echo "description=${DESC_INPUT:-${{ github.event.repository.description }}}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
       - uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ inputs.repository }}
-          short-description: ${{ inputs.description }}
+          repository: ${{ steps.getparams.outputs.repository }}
+          short-description: ${{ steps.getparams.outputs.description }}

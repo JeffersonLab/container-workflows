@@ -1,4 +1,4 @@
-name: Update DockerHub Description Trigger
+name: DD
 on:
   workflow_dispatch:
   push:
@@ -8,9 +8,6 @@ on:
       - README.md
       - .github/workflows/dd.yml
 jobs:
-  dockerHubDescription:
+  description:
     uses: jeffersonlab/container-workflows/.github/workflows/docker-description.yml@v1
-    with:
-      repository: jeffersonlab/${{ github.event.repository.name }}
-      description: ${{ github.event.repository.description }}
     secrets: inherit

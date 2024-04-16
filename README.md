@@ -20,4 +20,5 @@ This project uses it's own workflows in order to test them (the Dockerfile is ju
 Both workflows require the DOCKER_USERNAME and DOCKER_TOKEN secrets be defined in the calling project repo on GitHub.  The JLab organization license doesn't support org-level secrets at the moment.  The gh-release workflow is triggered by bumping the VERSION file.  The docker-publish workflow assumes there is a demo compose version specified in the file `compose.override.yaml`, so this file must exist in the caller repo.
 
 # See Also
+- [Other workflows](https://github.com/search?q=org%3Ajeffersonlab+topic%3Agh-action-workflow&type=repositories)
 - [Projects using this](https://github.com/search?q=org%3Ajeffersonlab+topic%3Acontainer-workflows&type=repositories)

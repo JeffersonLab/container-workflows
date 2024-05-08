@@ -34,9 +34,9 @@ jobs:
       - name: Get params or set defaults
         id: getparams
         run: |
-          REPO_INPUT=${{ inputs.repository }}
+          REPO_INPUT="${{ inputs.repository }}"
           echo "repository=${REPO_INPUT:-jeffersonlab/${{ github.event.repository.name }}}" >> $GITHUB_OUTPUT
-          DESC_INPUT=${{ inputs.description }}
+          DESC_INPUT="${{ inputs.description }}"
           echo description=${DESC_INPUT:-"${{ github.event.repository.description }}"} >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
       - uses: peter-evans/dockerhub-description@v4

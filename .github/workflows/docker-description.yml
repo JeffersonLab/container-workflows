@@ -24,7 +24,7 @@ jobs:
           REPO_INPUT=${{ inputs.repository }}
           echo "repository=${REPO_INPUT:-jeffersonlab/${{ github.event.repository.name }}}" >> $GITHUB_OUTPUT
           DESC_INPUT=${{ inputs.description }}
-          echo "description=${DESC_INPUT:-${{ github.event.repository.description }}}" >> $GITHUB_OUTPUT
+          echo description=${DESC_INPUT:-"${{ github.event.repository.description }}"} >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
       - uses: peter-evans/dockerhub-description@v4
         with:

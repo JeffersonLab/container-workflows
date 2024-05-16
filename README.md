@@ -5,17 +5,17 @@ GitHub Action container workflows
 
 | Name                 | Description                      |
 |----------------------|----------------------------------|
-| [docker-description.yml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/docker-description.yml) | Keep DockerHub README in-sync with GitHub |
-| [docker-publish.yml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/docker-publish.yml) | Publish Container image to DockerHub |
-| [gh-release.yml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/gh-release.yml) | Create a GitHub Release |
+| [docker-description.yaml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/docker-description.yaml) | Keep DockerHub README in-sync with GitHub |
+| [docker-publish.yaml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/docker-publish.yaml) | Publish Container image to DockerHub |
+| [gh-release.yaml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/gh-release.yaml) | Create a GitHub Release |
 
 ## How to use
 This project uses it's own workflows in order to test them (the Dockerfile is just a demo/example).  Copy and paste one or more of the following files into your project `.github/workflows` directory and update parameters accordingly:
 
 | Name                 | Description                      |
 |----------------------|----------------------------------|
-| [cd.yml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/cd.yml) | Continuous Deployment of a Docker image with GitHub release |
-| [dd.yml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/dd.yml) | DockerHub Description sync |
+| [cd.yaml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/cd.yaml) | Continuous Deployment of a Docker image with GitHub release |
+| [dd.yaml](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/dd.yaml) | DockerHub Description sync |
 
 Both workflows require the DOCKER_USERNAME and DOCKER_TOKEN secrets be defined in the calling project repo on GitHub.  The JLab organization license doesn't support org-level secrets at the moment.  The gh-release workflow is triggered by bumping the VERSION file.  
 
